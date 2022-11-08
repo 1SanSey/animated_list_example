@@ -45,24 +45,26 @@ class _ExampleWidgetState extends State<ExampleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: _insert,
-        child: const Icon(Icons.add),
-      ),
-      body: SafeArea(
-        child: AnimatedList(
-          key: _listKey,
-          initialItemCount: _data.length,
-          itemBuilder: (context, index, animation) {
-            return SizeTransition(
-              sizeFactor: animation,
-              child: GestureDetector(
-                onTap: () => _removeAtIndex(index),
-                child: _RowWidget(text: _data[index]),
-              ),
-            );
-          },
+    return MaterialApp(
+      home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: _insert,
+          child: const Icon(Icons.add),
+        ),
+        body: SafeArea(
+          child: AnimatedList(
+            key: _listKey,
+            initialItemCount: _data.length,
+            itemBuilder: (context, index, animation) {
+              return SizeTransition(
+                sizeFactor: animation,
+                child: GestureDetector(
+                  onTap: () => _removeAtIndex(index),
+                  child: _RowWidget(text: _data[index]),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
